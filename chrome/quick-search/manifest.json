@@ -1,6 +1,6 @@
 {
-    "name": "Bing Extensions",
-    "description": "Quick search wit Bing.",
+    "name": "QuickSearch Extensions",
+    "description": "An on selection menu with quick search items.",
     "version": "1.0",
     "manifest_version": 3,
     "action": {
