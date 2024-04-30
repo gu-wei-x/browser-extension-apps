@@ -1,23 +1,40 @@
 {
-    "name": "QuickSearch Extensions",
+    "name": "QuickSearch",
     "description": "An on selection menu with quick search items.",
     "version": "1.0",
     "manifest_version": 3,
-    "action": {
-        "default_popup": "main.html",
-        "default_icon": "images/bing.png"
+    "permissions": [
+      "tabs"
+    ],
+    "icons": {
+      "32": "images/search.png",
+      "128": "images/search.png"
     },
-    "permissions":["tabs"],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "images/icons.png"
+        ],
+        "matches": [
+          "<all_urls>"
+        ]
+      }
+    ],
+    "action": {
+        "default_popup": "settings.html",
+        "default_icon": "images/search.png"
+    },
     "content_scripts": [
-        {
-            "matches": [
-                "http://*/*",
-                "https://*/*"
-            ],
-            "js": [
-                "quick_search_menu.js"
-            ],
-            "all_frames": true
-        }
+      {
+        "matches": [
+          "http://*/*",
+          "https://*/*"
+        ],
+        "js": [
+          "js/on-selected-menu.js",
+          "js/main.js"
+        ],
+        "all_frames": true
+      }
     ]
-}
+  }
