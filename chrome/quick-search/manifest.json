@@ -4,9 +4,11 @@
     "version": "1.0",
     "manifest_version": 3,
     "permissions": [
-      "tabs"
+      "tabs",
+      "contextMenus"
     ],
     "icons": {
+      "16": "images/search.png",
       "32": "images/search.png",
       "128": "images/search.png"
     },
@@ -24,6 +26,7 @@
         "default_popup": "settings.html",
         "default_icon": "images/search.png"
     },
+    "options_page": "settings.html",
     "content_scripts": [
       {
         "matches": [
@@ -36,5 +39,9 @@
         ],
         "all_frames": true
       }
-    ]
+    ],
+    "background": {
+      "service_worker": "js/background.js",
+      "type": "module"
+    }
   }

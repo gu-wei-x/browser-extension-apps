@@ -33,7 +33,7 @@ document.addEventListener("mouseup", (e) => {
             top = (selectedRect.bottom - domRelative.top) + "px";
             left = (selectedRect.left - domRelative.left) + "px";
         }
- 
+
         selectMenu.setPosition(top, left);
 
         // magic number.
