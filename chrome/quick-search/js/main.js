@@ -25,11 +25,15 @@ document.addEventListener("mouseup", (e) => {
     }
 
     if (selectMenu) {
-        // TODO: better way to find the position.
         var selectedRect = window.getSelection().getRangeAt(0).getBoundingClientRect();
-        var domRelative = document.body.parentNode.getBoundingClientRect();
-        var top = (selectedRect.bottom - domRelative.top) + "px";
-        var left = (selectedRect.left - domRelative.left) + "px";
+        var top = (e.clientY) + "px";
+        var left = (e.clientX) + "px";
+        if (selectedRect.height > 0) {
+            var domRelative = document.body.parentNode.getBoundingClientRect();
+            top = (selectedRect.bottom - domRelative.top) + "px";
+            left = (selectedRect.left - domRelative.left) + "px";
+        }
+ 
         selectMenu.setPosition(top, left);
 
         // magic number.
