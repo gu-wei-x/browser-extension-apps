@@ -1,3 +1,5 @@
+import { OnSelectedMenu } from "./on-selected-menu.js"
+
 var selectMenu;
 document.onselectstart = (e) => {
     if (!selectMenu) {

@@ -35,8 +35,7 @@
           "https://*/*"
         ],
         "js": [
-          "js/on-selected-menu.js",
-          "js/main.js"
+          "js/contents.js"
         ],
         "all_frames": true
       }
