@@ -1,1 +1,9 @@
 *.DS_Store
+
+#deps
+*/**/node_modules
+package-lock.json
+
+#build
+*/**/dist
+npm-debug.log*

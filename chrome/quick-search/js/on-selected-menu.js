@@ -1,5 +1,5 @@
 /**Content script doesn't support customElements, this is workaround.*/
-class OnSelectedMenu {
+export class OnSelectedMenu {
     static containerID = "quick-serch-selected-menu";
     static #icon_url = chrome.runtime.getURL("images/icons.png");
     static #styles = '.selected-menu-box { z-index: 10000;position: absolute;cursor: pointer;border: 0;background: #FFF;box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);border-radius: 6px;padding: 10px 15px 9px 16px;display: block;}'
