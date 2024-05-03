@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <title>QuickSearch Settings</title>
+  <style>
+    @media (prefers-color-scheme: light) {
+      body {
+        background: #FFF;
+        color: #333;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #333;
+        color: #FFF;
+      }
+    }
+
+    body {
+      min-width: 300px;
+      font-size: 15px;
+    }
+
+    input {
+      margin: 5px;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <h2>QuickSearch Settings</h2>
+    <p>Please select your default search engine:</p>
+    <div id="search_engine_options">
+      <script src="../js/options.js" type="module"></script>
+    </div>
+</body>
+
+</html>
