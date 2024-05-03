@@ -2,6 +2,7 @@ import { Settings } from "./settings.js"
 
 function createOptionForSearchEngine(groupName, name, id, is_checked) {
     const option = document.createElement('div');
+    const span = document.createElement('span');
     const radioButton = document.createElement('input');
     radioButton.type = "radio";
     radioButton.checked = is_checked;
@@ -14,9 +15,17 @@ function createOptionForSearchEngine(groupName, name, id, is_checked) {
 
     const label = document.createElement('label');
     label.setAttribute("for", id);
-    label.innerText = name;
-    option.appendChild(radioButton);
-    option.appendChild(label);
+
+    const icon = document.createElement('i');
+    icon.className = `icon icon-${id}`;
+    label.appendChild(icon);
+
+    const textNode = document.createTextNode(name);
+    label.appendChild(textNode);
+
+    span.appendChild(radioButton);
+    span.appendChild(label);
+    option.appendChild(span);
     return option;
 }
 
