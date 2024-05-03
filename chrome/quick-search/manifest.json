@@ -24,10 +24,10 @@
       }
     ],
     "action": {
-        "default_popup": "settings.html",
+        "default_popup": "html/settings.html",
         "default_icon": "images/search.png"
     },
-    "options_page": "settings.html",
+    "options_page": "html/settings.html",
     "content_scripts": [
       {
         "matches": [
@@ -35,7 +35,7 @@
           "https://*/*"
         ],
         "js": [
-          "js/contents.js"
+          "js/content.js"
         ],
         "all_frames": true
       }

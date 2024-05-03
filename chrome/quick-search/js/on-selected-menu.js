@@ -1,3 +1,5 @@
+import { Settings } from "./settings.js";
+
 /**Content script doesn't support customElements, this is workaround.*/
 export class OnSelectedMenu {
     static containerID = "quick-serch-selected-menu";
@@ -6,17 +8,15 @@ export class OnSelectedMenu {
         + '.selected-menu-box a,.selected-menu-box a:hover,.selected-menu-box a:visited {text-decoration: none;color: #333;float: left;}'
         + '.selected-menu-box a:hover {background-color: gray;}'
         + '.selected-menu-box span {overflow: hidden;float: left;font-family: Arial, MicrosoftYaHei;white-space: nowrap;text-overflow: ellipsis;max-width: 64px;line-height: 32px;}'
-        + '.selected-menu-box .c-icon {float: left;transform: scale(.5); width: 32px;height: 32px;}'
-        + `.selected-menu-box .c-icon-search {background: url(${OnSelectedMenu.#icon_url}) no-repeat -10px -68px;}` // -10px -10px: searchGlyph
-        + `.selected-menu-box .c-icon-copilot {background: url(${OnSelectedMenu.#icon_url}) no-repeat -68px -10px;}`;
+        + '.selected-menu-box .c-icon {float: left;transform: scale(.5); width: 32px;height: 32px;}';
 
     constructor() {
         this.initialize();
     }
 
-    initialize() {
+    async initialize() {
         // create the template.
-        OnSelectedMenu.#createTemplate();
+        await OnSelectedMenu.#createTemplate();
         let tempalte = document.getElementById("custom-selected-menu-template");
         let content = tempalte.content;
 
@@ -59,7 +59,7 @@ export class OnSelectedMenu {
         slot.replaceChildren();
         if (this.content) {
             this.content.forEach(item => {
-                let menuItem = OnSelectedMenu.#createMenuItem(item, "c-icon-search");
+                let menuItem = OnSelectedMenu.#createMenuItem(item);
                 slot.appendChild(menuItem);
             });
         }
@@ -69,7 +69,7 @@ export class OnSelectedMenu {
         return OnSelectedMenu.containerID;
     }
 
-    static #createMenuItem(item, icon_class) {
+    static #createMenuItem(item) {
         var menuItem = document.createElement("a");
         menuItem.title = item.title;
         menuItem.setAttribute("target", "_blank");
@@ -81,27 +81,31 @@ export class OnSelectedMenu {
             menuItem.appendChild(content);
         }
 
-        var icon_class = "c-icon ";
-        if (item.type == 'search') {
-            icon_class += "c-icon-search";
-        } else if (item.type == 'copilot') {
-            icon_class += "c-icon-copilot"
-        }
-
-        var icon = document.createElement("i");
+        let icon_class = `c-icon-${item.name.toLowerCase()}-${item.type}`;
+        let icon = document.createElement("i");
         icon.className = "c-icon " + icon_class;
         menuItem.appendChild(icon);
 
         return menuItem;
     }
 
-    static #createTemplate() {
+    static async #createTemplate() {
         var menu_template = document.getElementById("custom-selected-menu-template");
         if (!menu_template) {
             const menuTemplate = document.createElement("template");
             menuTemplate.id = "custom-selected-menu-template";
+
+            let styleContent = OnSelectedMenu.#styles;
+            for (const [key, value] of await Settings.getAllSearchEngines()) {
+                if (value.entries) {
+                    value.entries.forEach(entry => {
+                        styleContent += `.selected-menu-box .c-icon-${key}-${entry.type}{background: url(${OnSelectedMenu.#icon_url}) no-repeat ${entry.icon}}`;
+                    });
+                }
+            }
+
             const style = document.createElement("style");
-            style.innerText = OnSelectedMenu.#styles;
+            style.innerText = styleContent;
             menuTemplate.content.appendChild(style);
 
             const menu = document.createElement("div");

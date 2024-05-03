@@ -1,4 +1,5 @@
 import { OnSelectedMenu } from "./on-selected-menu.js"
+import { Settings } from "./settings.js";
 
 var selectMenu;
 document.onselectstart = (e) => {
@@ -7,7 +8,7 @@ document.onselectstart = (e) => {
     }
 };
 
-document.addEventListener("mouseup", (e) => {
+document.addEventListener("mouseup", async (e) => {
     if (!selectMenu) {
         selectMenu = new OnSelectedMenu();
     }
@@ -44,10 +45,21 @@ document.addEventListener("mouseup", (e) => {
         if (enSelectedText.length > queryMaxLength) {
             enSelectedText = enSelectedText.substring(0, queryMaxLength);
         }
+    
+        let content = [];
+        const defaultSearchEntry = await Settings.getDefaultSearchEntry();
+        if (defaultSearchEntry && defaultSearchEntry.entries) {
+            defaultSearchEntry.entries.forEach(entry => {
+                content.push({
+                    name: defaultSearchEntry.name,
+                    type: entry.type,
+                    content: entry["show_query"] ? selectedText : "",
+                    title: entry.title,
+                    url: `${entry.url_temple}${selectedText}`
+                });
+            });
+        }
 
-        var content = [
-            { "type": "search", "content": `${selectedText}`, "title": "Search", "url": `https://www.bing.com/search?q=${enSelectedText}` },
-            { "type": "copilot", "content": "", "title": "Ask Copilot", "url": `https://www.bing.com/search?showconv=1&sendquery=1&q=${enSelectedText}` }];
         selectMenu.setContent(content);
         selectMenu.show();
     }
