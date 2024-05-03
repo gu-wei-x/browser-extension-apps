@@ -1,0 +1,52 @@
+.bg-360_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -10px -10px;
+}
+
+x
+.bg-bing_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -62px -10px;
+}
+
+x
+.bg-google_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -10px -62px;
+}
+
+x
+.bg-copy_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -62px -62px;
+}
+
+x
+.bg-duckduckgo_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -114px -10px;
+}
+
+x
+.bg-search_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -114px -62px;
+}
+
+x
+.bg-copilot_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -10px -114px;
+}
+
+x
+.bg-yahoo_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -62px -114px;
+}
+
+x
+.bg-sogou_32 {
+    width: 32px; height: 32px;
+    background: url('css_sprites.png') -114px -114px;
+}

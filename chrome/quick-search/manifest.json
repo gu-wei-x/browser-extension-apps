@@ -9,9 +9,9 @@
       "storage"
     ],
     "icons": {
-      "16": "images/search.png",
-      "32": "images/search.png",
-      "128": "images/search.png"
+      "16": "images/search_16.png",
+      "32": "images/search_32.png",
+      "128": "images/search_128.png"
     },
     "web_accessible_resources": [
       {
@@ -24,10 +24,10 @@
       }
     ],
     "action": {
-        "default_popup": "html/settings.html",
-        "default_icon": "images/search.png"
+        "default_popup": "html/popup.html",
+        "default_icon": "images/search_32.png"
     },
-    "options_page": "html/settings.html",
+    "options_page": "html/popup.html",
     "content_scripts": [
       {
         "matches": [
