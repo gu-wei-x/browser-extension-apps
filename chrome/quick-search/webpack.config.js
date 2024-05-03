@@ -4,10 +4,10 @@ const path = require('path');
 module.exports = [
     {
         name: 'content-scripts',
-        entry: './js/main.js',
+        entry: './js/content.js',
         output: {
             path: path.resolve(__dirname, 'dist/quick-search/js'),
-            filename: 'contents.js',
+            filename: 'content.js',
         },
         mode: 'production',
         module: {
@@ -25,7 +25,7 @@ module.exports = [
             new CopyPlugin({
                 patterns: [
                     { from: "images", to: path.resolve(__dirname, 'dist/quick-search/images') },
-                    { from: "settings.html", to: path.resolve(__dirname, 'dist/quick-search/settings.html') },
+                    { from: "html", to: path.resolve(__dirname, 'dist/quick-search/html') },
                     { from: "manifest.json", to: path.resolve(__dirname, 'dist/quick-search/manifest.json') },
                 ],
             }),
