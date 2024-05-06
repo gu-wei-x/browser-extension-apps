@@ -93,7 +93,10 @@ export class OnSelectedMenu {
 
     static #createMenuItem(item) {
         var menuItem = document.createElement("a");
-        menuItem.title = item.title;
+        if (item.title) {
+            menuItem.title = chrome.i18n.getMessage(item.title);
+        }
+
         menuItem.setAttribute("target", "_blank");
         menuItem.setAttribute("href", item.url);
 

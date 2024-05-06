@@ -1,0 +1,34 @@
+{
+    "extTitle": {
+        "message": "QuickSearch",
+        "description": "The description of this ext."
+    },
+    "extDescription": {
+        "message": "An on selection menu with quick search items. You can choose your preferred search engine.",
+        "description": "The description of this ext."
+    },
+    "optionTitle": {
+        "message": "QuickSearch Settings",
+        "description": "The title of the options."
+    },
+    "preferredSearchEngine": {
+        "message": "Please select your preferred search engine:",
+        "description": "The text of the preferred search engine."
+    },
+    "bingSearchTooltip": {
+        "message": "Search with Bing",
+        "description": ""
+    },
+    "copilotTooltip": {
+        "message": "Ask Copilot",
+        "description": ""
+    },
+    "googleSearchTooltip": {
+        "message": "Search with Google",
+        "description": ""
+    },
+    "duckduckGoSearchTooltip": {
+        "message": "Search with DuckDuckGo",
+        "description": ""
+    }
+}

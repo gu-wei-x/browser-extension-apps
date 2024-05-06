@@ -40,17 +40,33 @@ async function handleSearchEngineOptionClick(event) {
     await Settings.setDefaultSearchEngine(selectedValue);
 }
 
-async function createOptions() {
-    var optionContainer = document.getElementById("search_engine_options");
-    if (optionContainer) {
-        let defaultSearchEngine = await Settings.getDefaultSearchEngine();
-        for (const [key, value] of Settings.getAllSearchEngines()) {
-            if (value.name) {
-                const option = createOptionForSearchEngine("search_engine_options", value.name, key, defaultSearchEngine == key);
-                optionContainer.appendChild(option);
-            }
+async function createOptions(parent) {
+    var optionContainer = document.createElement("div");
+    optionContainer.id = "search_engine_options";
+    let defaultSearchEngine = await Settings.getDefaultSearchEngine();
+    for (const [key, value] of Settings.getAllSearchEngines()) {
+        if (value.name) {
+            const option = createOptionForSearchEngine("search_engine_options", value.name, key, defaultSearchEngine == key);
+            optionContainer.appendChild(option);
         }
+    }
+    parent.appendChild(optionContainer);
+}
+
+async function createOptions2() {
+    var optionContainer = document.getElementById("options");
+    if (optionContainer) {
+        const titleElement = document.createElement("h2");
+        const titleText = document.createTextNode(chrome.i18n.getMessage("optionTitle"));
+        titleElement.appendChild(titleText);
+        optionContainer.appendChild(titleElement);
+
+        const desElement = document.createElement("p");
+        const desText = document.createTextNode(chrome.i18n.getMessage("preferSearchEngine"));
+        desElement.appendChild(desText);
+        optionContainer.appendChild(desElement);
+        await createOptions(optionContainer);
     }
 }
 
-createOptions();
+createOptions2();

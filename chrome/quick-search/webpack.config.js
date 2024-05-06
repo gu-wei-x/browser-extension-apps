@@ -7,6 +7,7 @@ const path = require('path');
 // webpack --mode development
 module.exports = [
     {
+        name: 'css',
         entry: { menu_theme: './css/menu_theme.css' },
         output: {
             path: path.resolve(__dirname, "dist/quick-search/css")
@@ -33,11 +34,15 @@ module.exports = [
         mode: 'production'
     },
     {
-        name: 'content-scripts',
-        entry: './js/content.js',
+        name: 'js',
+        entry: {
+            content: './js/content.js',
+            background: './js/background.js',
+            options: './js/options.js',
+        },
         output: {
             path: path.resolve(__dirname, 'dist/quick-search/js'),
-            filename: 'content.js',
+            filename: '[name].js',
         },
         mode: 'production',
         module: {
@@ -56,49 +61,10 @@ module.exports = [
                 patterns: [
                     { from: "html", to: path.resolve(__dirname, 'dist/quick-search/html') },
                     { from: "images", to: path.resolve(__dirname, 'dist/quick-search/images') },
+                    { from: "_locales", to: path.resolve(__dirname, 'dist/quick-search/_locales') },
                     { from: "manifest.json", to: path.resolve(__dirname, 'dist/quick-search/manifest.json') },
                 ],
             }),
-        ],
-    },
-    {
-        name: 'background-scripts',
-        entry: './js/background.js',
-        output: {
-            path: path.resolve(__dirname, 'dist/quick-search/js'),
-            filename: 'background.js',
-        },
-        mode: 'production',
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader'
-                    }
-                }
-            ]
-        }
-    },
-    {
-        name: 'settings',
-        entry: './js/options.js',
-        output: {
-            path: path.resolve(__dirname, 'dist/quick-search/js'),
-            filename: 'options.js',
-        },
-        mode: 'production',
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader'
-                    }
-                }
-            ]
-        }
-    },
+        ]
+    }
 ];
