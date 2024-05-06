@@ -4,13 +4,13 @@ export const SearchEngines = {
         "entries": [
             {
                 "type": "serp",
-                "title": "Search",
+                "title": "bingSearchTooltip",
                 "url_temple": "https://www.bing.com/search?q=",
                 "show_query": "1"
             },
             {
                 "type": "ai",
-                "title": "Ask Copilot",
+                "title": "copilotTooltip",
                 "url_temple": "https://www.bing.com/search?showconv=1&sendquery=1&q=",
             }
         ]
@@ -20,7 +20,7 @@ export const SearchEngines = {
         "entries": [
             {
                 "type": "serp",
-                "title": "Search",
+                "title": "googleSearchTooltip",
                 "url_temple": "https://www.google.com/search?q=",
                 "show_query": "1"
             }
@@ -31,7 +31,7 @@ export const SearchEngines = {
         "entries": [
             {
                 "type": "serp",
-                "title": "Search",
+                "title": "duckduckGoSearchTooltip",
                 "url_temple": "https://duckduckgo.com/?va=g&t=hj&ia=web&q=",
                 "show_query": "1"
             }
