@@ -17,7 +17,7 @@ function createOptionForSearchEngine(groupName, name, id, is_checked) {
     label.setAttribute("for", id);
 
     const icon = document.createElement('i');
-    icon.className = `icon icon-${id}`;
+    icon.className = `icon icon-${id.toLowerCase()}`;
     label.appendChild(icon);
 
     const textNode = document.createTextNode(name);
@@ -44,12 +44,21 @@ async function createOptions(parent) {
     var optionContainer = document.createElement("div");
     optionContainer.id = "search_engine_options";
     let preferedSearchEngine = await Settings.getPreferedSearchEngine();
-    for (const [key, value] of Settings.getAllSearchEngines()) {
+    let searchEngineConfig = await Settings.getSearchEngineConfig();
+    if (!preferedSearchEngine || !searchEngineConfig) {
+        return;
+    }
+
+    for (const [key, value] of Object.entries(searchEngineConfig.searchEngines)) {
         if (value.name) {
-            const option = createOptionForSearchEngine("search_engine_options", value.name, key, preferedSearchEngine && preferedSearchEngine == value);
+            const option = createOptionForSearchEngine("search_engine_options",
+                chrome.i18n.getMessage(value.name),
+                key,
+                preferedSearchEngine && preferedSearchEngine == value);
             optionContainer.appendChild(option);
         }
     }
+
     parent.appendChild(optionContainer);
 }
 

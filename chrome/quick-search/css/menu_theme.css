@@ -68,3 +68,19 @@
 .selected-menu-box .c-icon-duckduckgo-serp {
     background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -114px -10px;
 }
+
+.selected-menu-box .c-icon-yahoo-serp {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -62px -114px;
+}
+
+.selected-menu-box .c-icon-360-serp {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -10px -10px;
+}
+
+.selected-menu-box .c-icon-baidu-serp {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -62px -62px;
+}
+
+.selected-menu-box .c-icon-sogou-serp {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -166px -10px;
+}
