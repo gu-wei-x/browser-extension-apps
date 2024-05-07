@@ -1,9 +1,9 @@
 import { Settings } from "./settings";
 
 async function createMenu() {
-    const defaultSearchEntry = await Settings.getDefaultSearchEntry();
-    if (defaultSearchEntry && defaultSearchEntry.entries) {
-        defaultSearchEntry.entries.forEach(entry => {
+    const preferedSearchEngine = await Settings.getPreferedSearchEngine();
+    if (preferedSearchEngine && preferedSearchEngine.entries) {
+        preferedSearchEngine.entries.forEach(entry => {
             if (entry.title) {
                 chrome.contextMenus.create({
                     id: `on-selected-menu-search-${entry.type}`,
@@ -32,9 +32,9 @@ chrome.contextMenus.onClicked.addListener(async (item, tab) => {
         selectedText = selectedText.substring(0, queryMaxLength);
     }
 
-    const defaultSearchEntry = await Settings.getDefaultSearchEntry();
-    if (defaultSearchEntry && defaultSearchEntry.entries) {
-        defaultSearchEntry.entries.forEach(entry => {
+    const preferedSearchEngine = await Settings.getPreferedSearchEngine();
+    if (preferedSearchEngine && preferedSearchEngine.entries) {
+        preferedSearchEngine.entries.forEach(entry => {
             if (item.menuItemId == `on-selected-menu-search-${entry.type}`) {
                 let destination = `${entry.url_temple}${selectedText}`;
                 chrome.tabs.create({ url: destination, index: tab.index + 1 });

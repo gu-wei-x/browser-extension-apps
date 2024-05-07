@@ -8,3 +8,4 @@ setup:
 3. npm run build.
 
 sprite-generator: https://www.toptal.com/developers/css/sprite-generator
+https://www.svgviewer.dev/svg-to-png

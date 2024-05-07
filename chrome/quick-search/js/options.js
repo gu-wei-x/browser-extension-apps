@@ -32,41 +32,41 @@ function createOptionForSearchEngine(groupName, name, id, is_checked) {
 async function handleSearchEngineOptionClick(event) {
     const radioButton = event.target;
     const selectedValue = radioButton.value;
-    let defaultSearchEngine = await Settings.getDefaultSearchEngine();
-    if (defaultSearchEngine && defaultSearchEngine == selectedValue) {
+    let preferedSearchEngine = await Settings.getPreferedSearchEngine();
+    if (preferedSearchEngine && preferedSearchEngine == selectedValue) {
         return;
     }
 
-    await Settings.setDefaultSearchEngine(selectedValue);
+    await Settings.updatePreferedSearchEngine(selectedValue);
 }
 
 async function createOptions(parent) {
     var optionContainer = document.createElement("div");
     optionContainer.id = "search_engine_options";
-    let defaultSearchEngine = await Settings.getDefaultSearchEngine();
+    let preferedSearchEngine = await Settings.getPreferedSearchEngine();
     for (const [key, value] of Settings.getAllSearchEngines()) {
         if (value.name) {
-            const option = createOptionForSearchEngine("search_engine_options", value.name, key, defaultSearchEngine == key);
+            const option = createOptionForSearchEngine("search_engine_options", value.name, key, preferedSearchEngine && preferedSearchEngine == value);
             optionContainer.appendChild(option);
         }
     }
     parent.appendChild(optionContainer);
 }
 
-async function createOptions2() {
-    var optionContainer = document.getElementById("options");
-    if (optionContainer) {
+async function createContent() {
+    var contentContainer = document.getElementById("main-content");
+    if (contentContainer) {
         const titleElement = document.createElement("h2");
         const titleText = document.createTextNode(chrome.i18n.getMessage("optionTitle"));
         titleElement.appendChild(titleText);
-        optionContainer.appendChild(titleElement);
+        contentContainer.appendChild(titleElement);
 
         const desElement = document.createElement("p");
         const desText = document.createTextNode(chrome.i18n.getMessage("preferSearchEngine"));
         desElement.appendChild(desText);
-        optionContainer.appendChild(desElement);
-        await createOptions(optionContainer);
+        contentContainer.appendChild(desElement);
+        await createOptions(contentContainer);
     }
 }
 
-createOptions2();
+createContent();
