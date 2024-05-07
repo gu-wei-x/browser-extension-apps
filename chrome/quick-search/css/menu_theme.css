@@ -1,11 +1,15 @@
+:host {
+    all: initial
+}
+
 .selected-menu-box {
     border: 1px solid #e5e7eb;
+    border-radius: 9999px;
     z-index: 10000;
     position: absolute;
     cursor: pointer;
     background: #FFF;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
-    border-radius: 10px;
     padding: 10px 15px 9px 16px;
     display: block;
 }
@@ -34,7 +38,8 @@
     text-overflow: ellipsis;
     max-width: 64px;
     line-height: 32px;
-    margin-right: 8px
+    margin-right: 8px;
+    color: #333;
 }
 
 .selected-menu-box .c-icon {
@@ -42,6 +47,10 @@
     transform: scale(.5);
     width: 32px;
     height: 32px;
+}
+
+.selected-menu-box .c-icon-copy {
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -62px -62px;
 }
 
 .selected-menu-box .c-icon-bing-serp {

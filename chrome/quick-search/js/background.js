@@ -4,11 +4,13 @@ async function createMenu() {
     const defaultSearchEntry = await Settings.getDefaultSearchEntry();
     if (defaultSearchEntry && defaultSearchEntry.entries) {
         defaultSearchEntry.entries.forEach(entry => {
-            chrome.contextMenus.create({
-                id: `on-selected-menu-search-${entry.type}`,
-                title: entry.title,
-                contexts: ['selection']
-            });
+            if (entry.title) {
+                chrome.contextMenus.create({
+                    id: `on-selected-menu-search-${entry.type}`,
+                    title: chrome.i18n.getMessage(entry.title),
+                    contexts: ['selection']
+                });
+            }
         });
     }
 }

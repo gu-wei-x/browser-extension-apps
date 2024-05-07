@@ -30,5 +30,9 @@
     "duckduckGoSearchTooltip": {
         "message": "问问 DuckDuckGo",
         "description": ""
+    },
+    "copyTooltip": {
+        "message": "拷贝",
+        "description": ""
     }
 }
