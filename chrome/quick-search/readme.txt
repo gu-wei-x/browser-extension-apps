@@ -9,3 +9,7 @@ setup:
 
 sprite-generator: https://www.toptal.com/developers/css/sprite-generator
 https://www.svgviewer.dev/svg-to-png
+
+how to test with locale:
+
+chrome.exe --lang=zh-CN

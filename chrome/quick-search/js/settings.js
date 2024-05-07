@@ -1,19 +1,21 @@
-import { SearchEngines } from "./search-engines.js"
+import { SearchEnginesConfig } from "./search-engines.js"
 
 export class Settings {
     static #PrefsKey = "userPrefs";
-    static #DefaultSearchEngine = "bing";
     static #PreferedSearchEngineKey = "search_engine";
 
-    static getAllSearchEngines() {
-        // todo: based on locale.
-        return Object.entries(SearchEngines);
+    static async getSearchEngineConfig() {
+        return await Settings.#getAllSearchEnginesWithLocal();
     }
 
     static async getPreferedSearchEngine() {
-        // todo: default based on locale.
-        const preferedSearchEngine = await Settings.#getUserPrefsValue(Settings.#PreferedSearchEngineKey) || Settings.#DefaultSearchEngine;
-        return SearchEngines[preferedSearchEngine];
+        let searchEngineConfig = await Settings.getSearchEngineConfig();
+        let preferedSearchEngine = await Settings.#getUserPrefsValue(Settings.#PreferedSearchEngineKey);
+        if (searchEngineConfig.searchEngines.hasOwnProperty(preferedSearchEngine)) {
+            return searchEngineConfig.searchEngines[preferedSearchEngine];
+        } else {
+            return searchEngineConfig.searchEngines[searchEngineConfig.default];
+        }
     }
 
     static async updatePreferedSearchEngine(preferedSearchEngine) {
@@ -40,5 +42,20 @@ export class Settings {
     static async #getUserPrefsValue(key) {
         let prefs = await Settings.#getUserPrefs();
         return prefs[Settings.#PrefsKey][key];
+    }
+
+    static async #getAllSearchEnginesWithLocal() {
+        let uiLang = await chrome.i18n.getUILanguage();
+        if (!uiLang) {
+            uiLang = "en";
+        }
+
+        let locale = uiLang.split("-")[0];
+        if (SearchEnginesConfig.hasOwnProperty(uiLang) || SearchEnginesConfig.hasOwnProperty(locale)) {
+            return SearchEnginesConfig[uiLang] || SearchEnginesConfig[locale];
+        } else {
+            //fall back to en.
+            return SearchEnginesConfig["en"];
+        }
     }
 }

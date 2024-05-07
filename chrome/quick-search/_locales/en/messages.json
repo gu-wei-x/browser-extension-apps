@@ -1,22 +1,26 @@
 {
     "extTitle": {
         "message": "QuickSearch",
-        "description": "The description of this ext."
+        "description": ""
     },
     "extDescription": {
         "message": "An on selection menu with quick search items. You can choose your preferred search engine.",
-        "description": "The description of this ext."
+        "description": ""
     },
     "optionTitle": {
         "message": "QuickSearch Settings",
-        "description": "The title of the options."
+        "description": ""
     },
     "preferredSearchEngine": {
         "message": "Please select your preferred search engine:",
-        "description": "The text of the preferred search engine."
+        "description": ""
     },
     "bingSearchTooltip": {
         "message": "Search with Bing",
+        "description": ""
+    },
+    "bingName": {
+        "message": "Bing",
         "description": ""
     },
     "copilotTooltip": {
@@ -27,12 +31,52 @@
         "message": "Search with Google",
         "description": ""
     },
+    "googleName": {
+        "message": "Google",
+        "description": ""
+    },
     "duckduckGoSearchTooltip": {
         "message": "Search with DuckDuckGo",
         "description": ""
     },
+    "duckDuckGoName": {
+        "message": "DuckDuckGo",
+        "description": ""
+    },
     "copyTooltip": {
         "message": "Copy",
+        "description": ""
+    },
+    "yahooSearchTooltip": {
+        "message": "Search with Yahoo",
+        "description": ""
+    },
+    "yahooName": {
+        "message": "Yahoo",
+        "description": ""
+    },
+    "360SearchTooltip": {
+        "message": "Search with 360",
+        "description": ""
+    },
+    "360Name": {
+        "message": "360",
+        "description": ""
+    },
+    "baiduSearchTooltip": {
+        "message": "Search with Baidu",
+        "description": ""
+    },
+    "baiduName": {
+        "message": "Baidu",
+        "description": ""
+    },
+    "sogouSearchTooltip": {
+        "message": "Search with Sogou",
+        "description": ""
+    },
+    "sogouName": {
+        "message": "Sogou",
         "description": ""
     }
 }

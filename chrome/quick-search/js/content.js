@@ -68,7 +68,7 @@ OnSelectedMenu.loadTheme(theme_url).then(() => {
             if (preferedSearchEngine && preferedSearchEngine.entries) {
                 preferedSearchEngine.entries.forEach(entry => {
                     content.push({
-                        name: preferedSearchEngine.name,
+                        name: preferedSearchEngine.key,
                         type: entry.type,
                         title: entry.title,
                         url: `${entry.url_temple}${selectedText}`
