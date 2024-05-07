@@ -50,19 +50,19 @@
 }
 
 .selected-menu-box .c-icon-copy {
-    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -62px -62px;
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat  -114px -62px;
 }
 
 .selected-menu-box .c-icon-bing-serp {
-    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -62px -10px;
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -114px -114px;
 }
 
 .selected-menu-box .c-icon-bing-ai {
-    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -10px -114px;
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -62px -10px;
 }
 
 .selected-menu-box .c-icon-google-serp {
-    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -10px -62px
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -10px -114px;
 }
 
 .selected-menu-box .c-icon-duckduckgo-serp {

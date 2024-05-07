@@ -64,13 +64,12 @@ OnSelectedMenu.loadTheme(theme_url).then(() => {
             }
 
             let content = [];
-            const defaultSearchEntry = await Settings.getDefaultSearchEntry();
-            if (defaultSearchEntry && defaultSearchEntry.entries) {
-                defaultSearchEntry.entries.forEach(entry => {
+            const preferedSearchEngine = await Settings.getPreferedSearchEngine();
+            if (preferedSearchEngine && preferedSearchEngine.entries) {
+                preferedSearchEngine.entries.forEach(entry => {
                     content.push({
-                        name: defaultSearchEntry.name,
+                        name: preferedSearchEngine.name,
                         type: entry.type,
-                        content: entry["show_query"] ? selectedText : "",
                         title: entry.title,
                         url: `${entry.url_temple}${selectedText}`
                     });
