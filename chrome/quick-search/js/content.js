@@ -2,6 +2,20 @@ import { OnSelectedMenu } from "./on-selected-menu.js"
 import { Settings } from "./settings.js";
 
 const theme_url = chrome.runtime.getURL('css/menu_theme.css');
+function isEditableElement(el) {
+    let activeElement = document.activeElement;
+    if (activeElement) {
+        if (['TEXTAREA', 'INPUT'].includes(activeElement.nodeName)) {
+            return true;
+        }
+        else if (activeElement.isContentEditable) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 OnSelectedMenu.loadTheme(theme_url).then(() => {
     var selectMenu;
     document.onselectstart = (e) => {
@@ -15,7 +29,8 @@ OnSelectedMenu.loadTheme(theme_url).then(() => {
             selectMenu = new OnSelectedMenu();
         }
 
-        if (e.target && e.target.id == OnSelectedMenu.getContainerID()) {
+        if (!e.target ||
+            (e.target && (isEditableElement(e.target) || e.target.id == OnSelectedMenu.getContainerID()))) {
             selectMenu.hide();
             return;
         }
@@ -61,7 +76,7 @@ OnSelectedMenu.loadTheme(theme_url).then(() => {
                     });
                 });
             }
-            
+
             selectMenu.setSelectedText(selectedText);
             selectMenu.setContent(content);
             selectMenu.show();

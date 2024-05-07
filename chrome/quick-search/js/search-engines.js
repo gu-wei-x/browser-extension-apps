@@ -5,13 +5,13 @@ export const SearchEngines = {
             {
                 "type": "serp",
                 "title": "bingSearchTooltip",
-                "url_temple": "https://www.bing.com/search?q=",
+                "url_temple": "https://www.bing.com/search?form=ancmsce&q=",
                 "show_query": "1"
             },
             {
                 "type": "ai",
                 "title": "copilotTooltip",
-                "url_temple": "https://www.bing.com/search?showconv=1&sendquery=1&q=",
+                "url_temple": "https://www.bing.com/search?form=ancmsce&showconv=1&sendquery=1&q=",
             }
         ]
     },
@@ -21,7 +21,7 @@ export const SearchEngines = {
             {
                 "type": "serp",
                 "title": "googleSearchTooltip",
-                "url_temple": "https://www.google.com/search?q=",
+                "url_temple": "https://www.google.com/search?ie=UTF-8&q=",
                 "show_query": "1"
             }
         ]

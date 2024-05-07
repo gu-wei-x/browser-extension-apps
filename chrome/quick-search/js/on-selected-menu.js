@@ -3,7 +3,6 @@ import { Settings } from "./settings.js";
 /**Content script doesn't support customElements, this is workaround.*/
 export class OnSelectedMenu {
     static containerID = "quick-serch-selected-menu";
-    static #icon_url = chrome.runtime.getURL("images/icons.png");
     static #themeCss = '';
 
     constructor() {
@@ -59,6 +58,7 @@ export class OnSelectedMenu {
         slot.replaceChildren();
         if (this.selectedText && this.content) {
             slot.appendChild(OnSelectedMenu.#createSelectedTextItem(this.selectedText));
+            slot.appendChild(OnSelectedMenu.#createCopyItem(this.selectedText));
             this.content.forEach(item => {
                 let menuItem = OnSelectedMenu.#createMenuItem(item);
                 slot.appendChild(menuItem);
@@ -89,6 +89,21 @@ export class OnSelectedMenu {
         const textContent = document.createTextNode(selectedText);
         textItem.appendChild(textContent);
         return textItem;
+    }
+
+    static #createCopyItem(selectedText) {
+        let menuItem = document.createElement("a");
+        menuItem.title = chrome.i18n.getMessage("copyTooltip");
+        menuItem.setAttribute("href", "#");
+        menuItem.onclick = (e) => {
+            navigator.clipboard.writeText(selectedText);
+        }
+
+        let icon = document.createElement("i");
+        icon.className = "c-icon c-icon-copy";
+        menuItem.appendChild(icon);
+
+        return menuItem;
     }
 
     static #createMenuItem(item) {

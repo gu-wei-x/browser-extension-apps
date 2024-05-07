@@ -30,5 +30,9 @@
     "duckduckGoSearchTooltip": {
         "message": "Search with DuckDuckGo",
         "description": ""
+    },
+    "copyTooltip": {
+        "message": "Copy",
+        "description": ""
     }
 }
