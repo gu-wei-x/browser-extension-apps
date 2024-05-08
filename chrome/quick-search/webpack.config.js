@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = [
     {
         name: 'css',
-        entry: { menu_theme: './css/menu_theme.css' },
+        entry: { menu_theme: './src/css/menu_theme.css' },
         output: {
             path: path.resolve(__dirname, "dist/quick-search/css")
         },
@@ -36,9 +36,9 @@ module.exports = [
     {
         name: 'js',
         entry: {
-            content: './js/content.js',
-            background: './js/background.js',
-            options: './js/options.js',
+            content: './src/js/content.js',
+            background: './src/js/background.js',
+            options: './src/js/options.js',
         },
         output: {
             path: path.resolve(__dirname, 'dist/quick-search/js'),
@@ -59,10 +59,10 @@ module.exports = [
         plugins: [
             new CopyPlugin({
                 patterns: [
-                    { from: "html", to: path.resolve(__dirname, 'dist/quick-search/html') },
-                    { from: "images", to: path.resolve(__dirname, 'dist/quick-search/images') },
-                    { from: "_locales", to: path.resolve(__dirname, 'dist/quick-search/_locales') },
-                    { from: "manifest.json", to: path.resolve(__dirname, 'dist/quick-search/manifest.json') },
+                    { from: "./src/html", to: path.resolve(__dirname, 'dist/quick-search/html') },
+                    { from: "./src/images", to: path.resolve(__dirname, 'dist/quick-search/images') },
+                    { from: "./src/_locales", to: path.resolve(__dirname, 'dist/quick-search/_locales') },
+                    { from: "./src/manifest.json", to: path.resolve(__dirname, 'dist/quick-search/manifest.json') },
                 ],
             }),
         ]
