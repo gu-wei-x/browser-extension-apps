@@ -1,14 +1,14 @@
 {
     "extTitle": {
-        "message": "QuickSearch",
+        "message": "QuickSearch Menu",
         "description": ""
     },
     "extDescription": {
-        "message": "An on selection menu with quick search items. You can choose your preferred search engine.",
+        "message": "An on-selection menu with quick search items. You can quickly search selected-text with your preferred selected search engine.",
         "description": ""
     },
     "optionTitle": {
-        "message": "QuickSearch Settings",
+        "message": "QuickSearch Menu Settings",
         "description": ""
     },
     "preferredSearchEngine": {
