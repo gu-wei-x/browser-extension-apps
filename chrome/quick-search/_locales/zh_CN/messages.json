@@ -11,7 +11,7 @@
         "message": "快捷搜索菜单设置",
         "description": ""
     },
-    "preferSearchEngine": {
+    "preferredSearchEngine": {
         "message": "请选择您喜欢的搜索引擎：",
         "description": ""
     },

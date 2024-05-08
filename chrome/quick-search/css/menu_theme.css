@@ -5,7 +5,7 @@
 .selected-menu-box {
     border: 1px solid #e5e7eb;
     border-radius: 9999px;
-    z-index: 10000;
+    z-index: 99999;
     position: absolute;
     cursor: pointer;
     background: #FFF;
@@ -54,7 +54,7 @@
 }
 
 .selected-menu-box .c-icon-bing-serp {
-    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -114px -114px;
+    background: url('chrome-extension://__MSG_@@extension_id__/images/icons.png') no-repeat -10px -62px;
 }
 
 .selected-menu-box .c-icon-bing-ai {
