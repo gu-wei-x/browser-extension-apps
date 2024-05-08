@@ -71,7 +71,7 @@ async function createContent() {
         contentContainer.appendChild(titleElement);
 
         const desElement = document.createElement("p");
-        const desText = document.createTextNode(chrome.i18n.getMessage("preferSearchEngine"));
+        const desText = document.createTextNode(chrome.i18n.getMessage("preferredSearchEngine"));
         desElement.appendChild(desText);
         contentContainer.appendChild(desElement);
         await createOptions(contentContainer);
