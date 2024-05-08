@@ -1,0 +1,3 @@
+
+sprite-generator: https://www.toptal.com/developers/css/sprite-generator
+svg-to-png: https://www.svgviewer.dev/svg-to-png
