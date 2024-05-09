@@ -7,7 +7,7 @@
         "message": "An on-selection menu with quick search items. You can quickly search selected-text with your preferred selected search engine.",
         "description": ""
     },
-    "optionTitle": {
+    "settingsTitle": {
         "message": "QuickSearch Menu Settings",
         "description": ""
     },
@@ -77,6 +77,18 @@
     },
     "sogouName": {
         "message": "Sogou",
+        "description": ""
+    }, 
+    "featureTitle": {
+        "message": "Please select your features:",
+        "description": ""
+    },
+    "rightClickMenuDescitption": {
+        "message": "Enable/Disable right-click menu",
+        "description": ""
+    },
+    "onSelectionsMenuDescitption": {
+        "message": "Enable/Disable on-selection menu",
         "description": ""
     }
 }

@@ -31,12 +31,12 @@ version: 1.0.0 - under development.
 * EN: Bing, DuckDuckGo, Google, Yahoo
 
 ![Extension](doc/screenshots/en/extension.png) ![Options](doc/screenshots/en/options.png) \
-![OnSelectedMenu](doc/screenshots/en/on-selection-menu.png) ![RightClickMenu](doc/screenshots/en/right-click-menu.png) \
+![OnSelectedMenu](doc/screenshots/en/on-selection-menu.png) ![RightClickMenu](doc/screenshots/en/right-click-menu.png)
 
 * zh-CN： 360, Baidu, Bing, Sogou
 
 ![Extension](doc/screenshots/zh-CN/extension.png) ![Options](doc/screenshots/zh-CN/options.png) \
-![OnSelectedMenu](doc/screenshots/zh-CN/on-selection-menu.png) ![RightClickMenu](doc/screenshots/zh-CN/right-click-menu.png) \
+![OnSelectedMenu](doc/screenshots/zh-CN/on-selection-menu.png) ![RightClickMenu](doc/screenshots/zh-CN/right-click-menu.png)
 
 
 ## Version History

@@ -22,6 +22,32 @@ export class Settings {
         return await Settings.#updateUserPrefs(Settings.#PreferedSearchEngineKey, preferedSearchEngine);
     }
 
+    static async isRightClickMenuEnabled() {
+        let prefs = await Settings.#getUserPrefs();
+        if (prefs[Settings.#PrefsKey].hasOwnProperty("right_click_menu")) {
+            return prefs[Settings.#PrefsKey]["right_click_menu"];
+        }
+
+        return true;
+    }
+
+    static async setRightClickMenu(isEnabled) {
+        await Settings.#updateUserPrefs("right_click_menu", isEnabled);
+    }
+
+    static async isOnSelectionMenuEnabled() {
+        let prefs = await Settings.#getUserPrefs();
+        if (prefs[Settings.#PrefsKey].hasOwnProperty("on_selection_menu")) {
+            return prefs[Settings.#PrefsKey]["on_selection_menu"];
+        }
+
+        return true;
+    }
+
+    static async setOnSelectionMenu(isEnabled) {
+        await Settings.#updateUserPrefs("on_selection_menu", isEnabled);
+    }
+
     static async #getUserPrefs() {
         let prefs = await chrome.storage.sync.get(Settings.#PrefsKey);
         if (prefs && Object.keys(prefs).length > 0) {

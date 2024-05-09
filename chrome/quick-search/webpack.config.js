@@ -34,11 +34,34 @@ module.exports = [
         mode: 'production'
     },
     {
+        name: 'js-lib',
+        entry: {
+            lib: './src/js/lib/index.js',
+        },
+        output: {
+            path: path.resolve(__dirname, 'dist/quick-search/js/lib'),
+            filename: '[name].js',
+        },
+        mode: 'production',
+        module: {
+            rules: [
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader'
+                    }
+                }
+            ]
+        },
+        plugins: []
+    },
+    {
         name: 'js',
         entry: {
-            content: './src/js/content.js',
             background: './src/js/background.js',
-            options: './src/js/options.js',
+            content: './src/js/content.js',
+            popup: './src/js/popup.js',
         },
         output: {
             path: path.resolve(__dirname, 'dist/quick-search/js'),
