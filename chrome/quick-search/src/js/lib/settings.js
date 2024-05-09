@@ -1,8 +1,8 @@
-import { SearchEnginesConfig } from "./search-engines.js"
+import { SearchEnginesConfig } from './search-engines'
 
 export class Settings {
-    static #PrefsKey = "userPrefs";
-    static #PreferedSearchEngineKey = "search_engine";
+    static #PrefsKey = 'userPrefs';
+    static #PreferedSearchEngineKey = 'search_engine';
 
     static async getSearchEngineConfig() {
         return await Settings.#getAllSearchEnginesWithLocal();
@@ -24,28 +24,28 @@ export class Settings {
 
     static async isRightClickMenuEnabled() {
         let prefs = await Settings.#getUserPrefs();
-        if (prefs[Settings.#PrefsKey].hasOwnProperty("right_click_menu")) {
-            return prefs[Settings.#PrefsKey]["right_click_menu"];
+        if (prefs[Settings.#PrefsKey].hasOwnProperty('right_click_menu')) {
+            return prefs[Settings.#PrefsKey]['right_click_menu'];
         }
 
         return true;
     }
 
     static async setRightClickMenu(isEnabled) {
-        await Settings.#updateUserPrefs("right_click_menu", isEnabled);
+        await Settings.#updateUserPrefs('right_click_menu', isEnabled);
     }
 
     static async isOnSelectionMenuEnabled() {
         let prefs = await Settings.#getUserPrefs();
-        if (prefs[Settings.#PrefsKey].hasOwnProperty("on_selection_menu")) {
-            return prefs[Settings.#PrefsKey]["on_selection_menu"];
+        if (prefs[Settings.#PrefsKey].hasOwnProperty('on_selection_menu')) {
+            return prefs[Settings.#PrefsKey]['on_selection_menu'];
         }
 
         return true;
     }
 
     static async setOnSelectionMenu(isEnabled) {
-        await Settings.#updateUserPrefs("on_selection_menu", isEnabled);
+        await Settings.#updateUserPrefs('on_selection_menu', isEnabled);
     }
 
     static async #getUserPrefs() {
@@ -73,15 +73,15 @@ export class Settings {
     static async #getAllSearchEnginesWithLocal() {
         let uiLang = await chrome.i18n.getUILanguage();
         if (!uiLang) {
-            uiLang = "en";
+            uiLang = 'en';
         }
 
-        let locale = uiLang.split("-")[0];
+        let locale = uiLang.split('-')[0];
         if (SearchEnginesConfig.hasOwnProperty(uiLang) || SearchEnginesConfig.hasOwnProperty(locale)) {
             return SearchEnginesConfig[uiLang] || SearchEnginesConfig[locale];
         } else {
             //fall back to en.
-            return SearchEnginesConfig["en"];
+            return SearchEnginesConfig['en'];
         }
     }
 }

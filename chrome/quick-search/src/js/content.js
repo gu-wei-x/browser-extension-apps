@@ -1,5 +1,5 @@
-import { OnSelectedMenu } from "./lib/on-selected-menu"
-import { Settings } from "./lib/settings";
+import { OnSelectedMenu } from './lib/on-selected-menu'
+import { Settings } from './lib/settings';
 
 const theme_url = chrome.runtime.getURL('css/menu_theme.css');
 function isEditableElement(el) {
@@ -28,7 +28,7 @@ OnSelectedMenu.loadTheme(theme_url).then(() => {
         }
     };
 
-    document.addEventListener("mouseup", async (e) => {
+    document.addEventListener('mouseup', async (e) => {
         if (!selectMenu && await Settings.isOnSelectionMenuEnabled()) {
             selectMenu = new OnSelectedMenu();
         }
@@ -54,12 +54,12 @@ OnSelectedMenu.loadTheme(theme_url).then(() => {
 
         if (selectMenu) {
             var selectedRect = window.getSelection().getRangeAt(0).getBoundingClientRect();
-            var top = (e.clientY) + "px";
-            var left = (e.clientX) + "px";
+            var top = (e.clientY) + 'px';
+            var left = (e.clientX) + 'px';
             if (selectedRect.height > 0) {
                 var domRelative = document.body.parentNode.getBoundingClientRect();
-                top = (selectedRect.bottom - domRelative.top) + "px";
-                left = (selectedRect.left - domRelative.left) + "px";
+                top = (selectedRect.bottom - domRelative.top) + 'px';
+                left = (selectedRect.left - domRelative.left) + 'px';
             }
 
             selectMenu.setPosition(top, left);

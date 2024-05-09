@@ -17,8 +17,6 @@ customElements.get('qs-toogle') || customElements.define('qs-toogle', class exte
         this.contentContainer.className = 'qs-toggle';
         this.shadow.appendChild(this.contentContainer);
 
-        /*this.checked = this.hasAttribute('checked') && this.getAttribute('checked');
-        this.title = this.getAttribute('title');*/
         this.connected = false;
 
     }
