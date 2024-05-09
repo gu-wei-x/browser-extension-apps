@@ -20,10 +20,8 @@ customElements.get('qs-settings') || customElements.define('qs-settings', class 
     }
 
     async #render() {
-        const titleElement = document.createElement("h2");
-        // todo: update the key name.
-
-        titleElement.innerText = chrome.i18n.getMessage("settingsTitle");
+        const titleElement = document.createElement('h2');
+        titleElement.innerText = chrome.i18n.getMessage('settingsTitle');
         this.contentContainer.appendChild(titleElement);
 
         // features.
@@ -68,8 +66,8 @@ customElements.get('qs-settings') || customElements.define('qs-settings', class 
         optionContainer.id = 'qs-options';
         optionContainer.className = 'qs-options';
 
-        const optionTitle = document.createElement("p");
-        optionTitle.innerText = chrome.i18n.getMessage("preferredSearchEngine");
+        const optionTitle = document.createElement('p');
+        optionTitle.innerText = chrome.i18n.getMessage('preferredSearchEngine');
         optionContainer.appendChild(optionTitle);
 
 
@@ -81,7 +79,7 @@ customElements.get('qs-settings') || customElements.define('qs-settings', class 
 
         for (const [key, value] of Object.entries(searchEngineConfig.searchEngines)) {
             if (value.name) {
-                const option = this.#createOptionForSearchEngine("search_engine_options",
+                const option = this.#createOptionForSearchEngine('search_engine_options',
                     chrome.i18n.getMessage(value.name),
                     key,
                     preferedSearchEngine && preferedSearchEngine == value);
@@ -96,12 +94,12 @@ customElements.get('qs-settings') || customElements.define('qs-settings', class 
         const option = document.createElement('div');
         const span = document.createElement('span');
         const radioButton = document.createElement('input');
-        radioButton.type = "radio";
+        radioButton.type = 'radio';
         radioButton.checked = is_checked;
         radioButton.id = id;
         radioButton.value = id;
         radioButton.name = groupName;
-        radioButton.addEventListener("click", async (event) => {
+        radioButton.addEventListener('click', async (event) => {
             const radioButton = event.target;
             const selectedValue = radioButton.value;
             let preferedSearchEngine = await Settings.getPreferedSearchEngine();
@@ -113,7 +111,7 @@ customElements.get('qs-settings') || customElements.define('qs-settings', class 
         })
 
         const label = document.createElement('label');
-        label.setAttribute("for", id);
+        label.setAttribute('for', id);
 
         const icon = document.createElement('i');
         icon.className = `icon icon-${id.toLowerCase()}`;

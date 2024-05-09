@@ -39,7 +39,7 @@ module.exports = [
             lib: './src/js/lib/index.js',
         },
         output: {
-            path: path.resolve(__dirname, 'dist/quick-search/js/lib'),
+            path: path.resolve(__dirname, 'dist/js/lib'),
             filename: '[name].js',
         },
         mode: 'production',

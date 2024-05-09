@@ -1,6 +1,6 @@
 /**Content script doesn't support customElements, this is workaround.*/
 export class OnSelectedMenu {
-    static containerID = "quick-serch-selected-menu";
+    static containerID = 'quick-serch-selected-menu';
     static #themeCss = '';
 
     constructor() {
@@ -10,13 +10,13 @@ export class OnSelectedMenu {
     async initialize() {
         // create the template.
         await OnSelectedMenu.#createTemplate();
-        let tempalte = document.getElementById("custom-selected-menu-template");
+        let tempalte = document.getElementById('custom-selected-menu-template');
         let content = tempalte.content;
 
-        this.menuContainer = document.createElement("custom-selected-menu");
+        this.menuContainer = document.createElement('custom-selected-menu');
         this.menuContainer.id = OnSelectedMenu.containerID;
-        this.menuContainer.style.display = "none";
-        this.shadowRoot = this.menuContainer.attachShadow({ mode: "open" });
+        this.menuContainer.style.display = 'none';
+        this.shadowRoot = this.menuContainer.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(content.cloneNode(true));
         document.body.appendChild(this.menuContainer);
         // TODO: bind actions.
@@ -41,13 +41,13 @@ export class OnSelectedMenu {
 
     show() {
         if (this.menuContainer) {
-            this.menuContainer.style.display = "block";
+            this.menuContainer.style.display = 'block';
         }
     }
 
     hide() {
         if (this.menuContainer) {
-            this.menuContainer.style.display = "none";
+            this.menuContainer.style.display = 'none';
         }
     }
 
@@ -83,59 +83,59 @@ export class OnSelectedMenu {
     }
 
     static #createSelectedTextItem(selectedText) {
-        const textItem = document.createElement("span");
+        const textItem = document.createElement('span');
         const textContent = document.createTextNode(selectedText);
         textItem.appendChild(textContent);
         return textItem;
     }
 
     static #createCopyItem(selectedText) {
-        let menuItem = document.createElement("a");
-        menuItem.title = chrome.i18n.getMessage("copyTooltip");
-        menuItem.setAttribute("href", "#");
+        let menuItem = document.createElement('a');
+        menuItem.title = chrome.i18n.getMessage('copyTooltip');
+        menuItem.setAttribute('href', '#');
         menuItem.onclick = (e) => {
             navigator.clipboard.writeText(selectedText);
         }
 
-        let icon = document.createElement("i");
-        icon.className = "c-icon c-icon-copy";
+        let icon = document.createElement('i');
+        icon.className = 'c-icon c-icon-copy';
         menuItem.appendChild(icon);
 
         return menuItem;
     }
 
     static #createMenuItem(item) {
-        var menuItem = document.createElement("a");
+        var menuItem = document.createElement('a');
         if (item.title) {
             menuItem.title = chrome.i18n.getMessage(item.title);
         }
 
-        menuItem.setAttribute("target", "_blank");
-        menuItem.setAttribute("href", item.url);
+        menuItem.setAttribute('target', '_blank');
+        menuItem.setAttribute('href', item.url);
 
         let icon_class = `c-icon-${item.name.toLowerCase()}-${item.type}`;
-        let icon = document.createElement("i");
-        icon.className = "c-icon " + icon_class;
+        let icon = document.createElement('i');
+        icon.className = 'c-icon ' + icon_class;
         menuItem.appendChild(icon);
 
         return menuItem;
     }
 
     static async #createTemplate() {
-        var menu_template = document.getElementById("custom-selected-menu-template");
+        var menu_template = document.getElementById('custom-selected-menu-template');
         if (!menu_template) {
-            const menuTemplate = document.createElement("template");
-            menuTemplate.id = "custom-selected-menu-template";
+            const menuTemplate = document.createElement('template');
+            menuTemplate.id = 'custom-selected-menu-template';
 
-            const style = document.createElement("style");
+            const style = document.createElement('style');
             style.innerText = OnSelectedMenu.#themeCss;
             menuTemplate.content.appendChild(style);
 
-            const menu = document.createElement("div");
-            menu.className = "selected-menu-box";
-            menu.id = "selected-menu-box";
+            const menu = document.createElement('div');
+            menu.className = 'selected-menu-box';
+            menu.id = 'selected-menu-box';
 
-            const slot = document.createElement("slot");
+            const slot = document.createElement('slot');
             menu.appendChild(slot);
 
             menuTemplate.content.appendChild(menu);
