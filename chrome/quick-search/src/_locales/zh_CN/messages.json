@@ -7,7 +7,7 @@
         "message": "方便搜索的快捷菜单, 您可以用您喜欢的搜索引擎快速的搜索选择的文本",
         "description": ""
     },
-    "optionTitle": {
+    "settingsTitle": {
         "message": "快捷搜索菜单设置",
         "description": ""
     },
@@ -65,6 +65,18 @@
     },
     "sogouName": {
         "message": "搜狗搜索",
+        "description": ""
+    },
+    "featureTitle": {
+        "message": "请选择您喜欢的功能:",
+        "description": ""
+    },
+    "rightClickMenuDescitption": {
+        "message": "打开或关闭右击菜单",
+        "description": ""
+    },
+    "onSelectionsMenuDescitption": {
+        "message": "打开或关闭文本选择菜单",
         "description": ""
     }
 }

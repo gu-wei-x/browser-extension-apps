@@ -1,4 +1,4 @@
-import { Settings } from "./settings";
+import { Settings } from './lib/settings'
 
 async function createMenu() {
     const preferedSearchEngine = await Settings.getPreferedSearchEngine();
@@ -45,5 +45,5 @@ chrome.contextMenus.onClicked.addListener(async (item, tab) => {
 
 chrome.storage.onChanged.addListener(async ({ search_engine }) => {
     chrome.contextMenus.removeAll();
-    await createMenu();
+    await Settings.isRightClickMenuEnabled() && await createMenu();
 });

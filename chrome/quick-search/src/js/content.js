@@ -1,5 +1,5 @@
-import { OnSelectedMenu } from "./on-selected-menu.js"
-import { Settings } from "./settings.js";
+import { OnSelectedMenu } from "./lib/on-selected-menu"
+import { Settings } from "./lib/settings";
 
 const theme_url = chrome.runtime.getURL('css/menu_theme.css');
 function isEditableElement(el) {
@@ -18,15 +18,23 @@ function isEditableElement(el) {
 
 OnSelectedMenu.loadTheme(theme_url).then(() => {
     var selectMenu;
-    document.onselectstart = (e) => {
-        if (!selectMenu) {
+    document.onselectstart = async (e) => {
+        if (!selectMenu && await Settings.isOnSelectionMenuEnabled()) {
             selectMenu = new OnSelectedMenu();
+        }
+
+        if (!await Settings.isOnSelectionMenuEnabled()) {
+            selectMenu && selectMenu.hide();
         }
     };
 
     document.addEventListener("mouseup", async (e) => {
-        if (!selectMenu) {
+        if (!selectMenu && await Settings.isOnSelectionMenuEnabled()) {
             selectMenu = new OnSelectedMenu();
+        }
+
+        if (!await Settings.isOnSelectionMenuEnabled()) {
+            return;
         }
 
         if (!e.target ||
